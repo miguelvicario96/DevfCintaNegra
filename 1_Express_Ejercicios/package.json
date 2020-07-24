@@ -1,0 +1,15 @@
+{
+  "name": "1_express_ejercicios",
+  "version": "1.0.0",
+  "description": "Ejercicio Clase 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Miguel Vicario",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
