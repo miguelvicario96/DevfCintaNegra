@@ -5,4 +5,6 @@ router.get('/', (req, res) => {
     res.status(200).send({message: 'Server On'});
 })
 
+router.use(require('./catRoutes'));
+
 module.exports = router;

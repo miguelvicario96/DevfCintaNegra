@@ -6,4 +6,4 @@ const bdURI = 'mongodb+srv://admin:root@cluster0.khmba.mongodb.net/devf_cintaneg
 
 mongoose.connect(bdURI, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => !err ? console.info('Database Connected') : console.error(error));
 
-module.exports = { Articulo, Ticket }
+module.exports = { Articulo, Ticket };
