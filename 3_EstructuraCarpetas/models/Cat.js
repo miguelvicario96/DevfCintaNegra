@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const catSchema = new mongoose.Schema({
     name:{
         type: String,
-        required
+        required: true
     },
     breed: String,
     age: Number,
