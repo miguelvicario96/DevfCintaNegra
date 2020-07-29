@@ -1,4 +1,5 @@
 const userServices = require('../services/userServices');
+const User = require('../models/User');
 
 module.exports = {
     create: async (req, res) => {
@@ -39,6 +40,25 @@ module.exports = {
             const user = await userServices.getUser(req.params.id);
             await userServices.updateUser(user, {isActive:false});
             res.status(200).send({message: 'Usuario Elminado'});
+        } catch (error) {
+            res.status(409).send({error});
+        }
+    },
+    login: async (req, res) => {
+        try {
+            const user = await userServices.findUserByEmail(req.body.email);
+
+            if (!user) {
+                res.status(404).send({message: 'User Not Found'});
+            } else {
+                const isMatch = userServices.comparePasswords(req.body.password, user.password);
+
+                if (!isMatch) {
+                    res.status(400).send({message: 'Invalid Credentials'});
+                } else {
+                    res.status(200).send({user});
+                }
+            }
         } catch (error) {
             res.status(409).send({error});
         }

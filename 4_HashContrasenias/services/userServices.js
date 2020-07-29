@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 module.exports = {
     create: (body) => {
@@ -16,5 +17,11 @@ module.exports = {
     updateUser: (user, body) => {
         Object.assign(user, body);
         return user.save();
+    },
+    findUserByEmail: (userEmail) => {
+        return User.findOne({email:userEmail});
+    },
+    comparePasswords: (password, savedPassword) => {
+        return bcrypt.compareSync(password, savedPassword);
     }
 }
