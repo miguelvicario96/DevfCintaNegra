@@ -39,7 +39,7 @@ module.exports = {
         try {
             const user = await userServices.getUser(req.params.id);
             await userServices.updateUser(user, {isActive:false});
-            res.status(200).send({message: 'Usuario Elminado'});
+            res.status(200).send({message: 'Usuario Eliminado'});
         } catch (error) {
             res.status(409).send({error});
         }
