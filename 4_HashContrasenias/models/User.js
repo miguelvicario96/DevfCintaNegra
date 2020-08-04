@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    photo: String,
     isActive: {
         type: Boolean,
         default: true

@@ -1,5 +1,6 @@
 const userServices = require('../services/userServices');
 const User = require('../models/User');
+const Utils = require('../utils')
 
 module.exports = {
     create: async (req, res) => {
@@ -27,6 +28,19 @@ module.exports = {
         }
     },
     updateUser: async (req, res) => {
+        if (req.files) {
+            try {
+                const upload = await Utils.uploadFile(req.files.photo.tempFilePath);
+                console.log(upload);
+    
+                if (upload) {
+                    req.body.photo = upload.url;
+                } 
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         try {
             const user = await userServices.getUser(req.params.id);
             const updatedUser = await userServices.updateUser(user, req.body);

@@ -46,7 +46,7 @@ function getUsers() {
 function getUser(params) {
     const user = {
         "isActive": true,
-        "_id": "5f1f788ca2eb1c0fbb83c7f5",
+        "_id": "5f1f788ca2eb1c0fbb83c7f6",
         "name": "Miguel Angel",
         "lastName": "Vicario",
         "email": "mvicario96@gmail.com",
