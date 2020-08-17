@@ -1,5 +1,4 @@
 const userServices = require('../services/userServices');
-const User = require('../models/User');
 const Utils = require('../utils')
 
 module.exports = {
@@ -12,6 +11,7 @@ module.exports = {
         }
     },
     getUsers: async (req, res) => {
+        console.log(req.decoded);
         try {
             const users = await userServices.getUsers();
             res.status(200).send({users});
@@ -60,17 +60,27 @@ module.exports = {
     },
     login: async (req, res) => {
         try {
+
+            //Busco al usuario por su email
             const user = await userServices.findUserByEmail(req.body.email);
 
             if (!user) {
                 res.status(404).send({message: 'User Not Found'});
             } else {
+                //Comparo las contraseñas
                 const isMatch = userServices.comparePasswords(req.body.password, user.password);
 
                 if (!isMatch) {
                     res.status(400).send({message: 'Invalid Credentials'});
                 } else {
-                    res.status(200).send({user});
+                    //Genero el jsonwebtoken
+                    const payload = {
+                        name: user.name,
+                        id: user._id,
+                        email: user.email
+                    };
+                    const token = Utils.createToken(payload);
+                    res.status(200).send({user, token});
                 }
             }
         } catch (error) {
