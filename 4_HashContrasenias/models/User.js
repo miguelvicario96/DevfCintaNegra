@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { postSchema } = require('./Post');
 const SALT_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
@@ -24,7 +25,8 @@ const userSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
-    }
+    },
+    posts: [postSchema]
 }, {timestamps:true});
 
 //aqui no se puede usar un arrow function, ya que no entienden el this
