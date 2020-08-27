@@ -7,3 +7,6 @@
 /3_EstructuraCarpetas/node_modules
 /4_HashContrasenias/node_modules
 /4_HashContrasenias/.env
+/5_MVC/node_modules
+/5_MVC/package-lock.json
+/5_MVC/.env

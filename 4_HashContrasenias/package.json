@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --detectOpenHandles ./tests --watchAll",
-    "star": "node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "Miguel Vicario",
