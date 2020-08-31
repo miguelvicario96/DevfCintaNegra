@@ -1,24 +1,18 @@
 const express = require('express');
+const { errors } = require('celebrate');
+const middlewares = require('../middlewares');
 
 const api = express();
 const PORT = process.env.PORT || 3000;
 
 api.use(express.urlencoded({ extended: true }));
 api.use(express.json({ extended: true }));
+api.use(middlewares.showDate);
 
-api.get('/', (req, res) => res.send('Hello World'));
+api.get('/', (req, res) => res.send(`Hello World`));
+api.use(require('../routers'));
 
-// CRUD Usuario
-const { User } = require('../models');
-
-api.post('/api/v1/users', async (req, res) => {
-  try {
-    const user = await new User(req.body).save();
-    res.status(201).json(user);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+api.use(errors());
 
 module.exports = {
   api,
