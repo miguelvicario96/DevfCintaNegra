@@ -1,11 +1,17 @@
 .DS_Store
 
 /1_Express/node_modules
+/1_Express/package-lock.json
 /1_Express_Ejercicios/node_modules
+/1_Express_Ejercicios/package-lock.json
 /2_BasesDeDatos/node_modules
+/2_BasesDeDatos/package-lock.json
 /2_BasesDeDatos_Ejercicios/node_modules
+/2_BasesDeDatos_Ejercicios/package-lock.json
 /3_EstructuraCarpetas/node_modules
+/3_EstructuraCarpetas/package-lock.json
 /4_HashContrasenias/node_modules
+/4_HashContrasenias/package-lock.json
 /4_HashContrasenias/.env
 /5_MVC/node_modules
 /5_MVC/package-lock.json
