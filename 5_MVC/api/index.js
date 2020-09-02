@@ -1,16 +1,16 @@
 const express = require('express');
+const morgan = require('morgan');
 const { errors } = require('celebrate');
-const middlewares = require('../middlewares');
 
 const api = express();
 const PORT = process.env.PORT || 3000;
 
+api.use(morgan('dev'));
 api.use(express.urlencoded({ extended: true }));
 api.use(express.json({ extended: true }));
-api.use(middlewares.showDate);
 
-api.get('/', (req, res) => res.send(`Hello World`));
-api.use(require('../routers'));
+api.get('/', (req, res) => res.send('Hello World'));
+api.use('/api/v1', require('../routers'));
 
 api.use(errors());
 
